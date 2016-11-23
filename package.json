@@ -43,6 +43,7 @@
     "eslint-plugin-react": "^6.1.2",
     "eslint-plugin-standard": "^2.0.0",
     "html-webpack-plugin": "^2.24.1",
+    "jsdom": "^9.8.3",
     "minimatch": "^3.0.3",
     "mocha": "^3.1.2",
     "nyc": "^10.0.0",

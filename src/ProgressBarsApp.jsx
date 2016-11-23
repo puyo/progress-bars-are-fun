@@ -12,9 +12,9 @@ export default class ProgressBarsApp extends React.Component {
     }
 
     renderBars() {
-        return this.props.bars.map((initValue, i) => (
+        return this.state.values.map((value, i) => (
             <Bar key={'bar-' + i}
-                 value={initValue}
+                 value={value}
                  limit={this.props.limit}
             />
         ))
@@ -55,9 +55,9 @@ export default class ProgressBarsApp extends React.Component {
     render() {
         return (
             <div>
-                {/* <p> {JSON.stringify(this.props)} </p>
-                    <p> {JSON.stringify(this.state)} </p>
-                  */}
+                <p> {JSON.stringify(this.props)} </p>
+                <p> {JSON.stringify(this.state)} </p>
+
                 {this.renderBars()}
 
                 <div>

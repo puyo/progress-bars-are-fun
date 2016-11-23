@@ -11,11 +11,11 @@ const expect = chai.expect
 
 describe('<ProgressBarsApp />', () => {
     before(function() {
-        this.wrapper = shallow(
+        this.wrapper = mount(
             <ProgressBarsApp
                 bars={[10, 20]}
                 buttons={[5, 10, -50]}
-                limit={10}
+                limit={111}
             />
         )
     })
@@ -30,5 +30,13 @@ describe('<ProgressBarsApp />', () => {
 
     it('contains the right labels on buttons', function() {
         expect(this.wrapper.find('button').first()).to.have.text('5')
+    })
+
+    it('increments progress on click', function() {
+        const bar = this.wrapper.find(Bar).first()
+        const button = this.wrapper.find('button').first()
+        expect(bar).to.have.text('10 / 111')
+        button.simulate('click')
+        expect(bar).to.have.text('15 / 111')
     })
 })
