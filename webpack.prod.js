@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     devtool: 'eval-source-map',
@@ -24,5 +25,8 @@ module.exports = {
             test: /\.styl$/,
             loader: 'style-loader!css-loader!stylus-loader'
         }]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({ template: 'src/index.html', inject: 'body' })
+    ]
 }
