@@ -19,7 +19,11 @@ export default class ProgressBarsApp extends React.Component {
         fetch(ProgressBarsApp.URL, props.options || {})
             .then(res => res.json())
             .then(json => {
-                this.setState({bars: json.bars, buttons: json.buttons, limit: json.limit})
+                this.setState({
+                    bars: json.bars,
+                    buttons: json.buttons,
+                    limit: json.limit
+                })
             })
             // .catch(error => {
             // })
@@ -42,16 +46,23 @@ export default class ProgressBarsApp extends React.Component {
     }
 
     renderButtons() {
-        const onClick = i => {
-            const val = this.state.buttons[i]
-        }
         return this.state.buttons.map((value, i) => (
-            <button key={'button-' + i}
-                    onClick={i => onClick(i)}
+            <button
+                key={'button-' + i}
+                onClick={() => this.onClick(i)}
             >
                 {value}
             </button>
         ))
+    }
+
+    onClick(buttonIndex) {
+        const barIndex = this.state.selected
+        const diff = this.state.buttons[buttonIndex]
+        const oldVal = this.state.bars[barIndex]
+        const newState = Object.assign({}, this.state)
+        newState.bars[barIndex] = Math.max(0, oldVal + diff)
+        this.setState(newState)
     }
 
     render() {
