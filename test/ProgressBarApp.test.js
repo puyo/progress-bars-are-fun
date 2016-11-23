@@ -28,14 +28,25 @@ describe('<ProgressBarsApp />', () => {
     })
 
     it('has the right labels on buttons', function() {
-        expect(this.wrapper.find('button').first()).to.have.text('5')
+        expect(this.wrapper.find('button').first()).to.have.text('+5')
     })
 
     it('increments progress on click', function() {
         const bar = this.wrapper.find(Bar).first()
-        const button = this.wrapper.find('button').first()
+        const button = this.wrapper.find('button').at(1)
         expect(bar).to.have.text('10 / 111')
         button.simulate('click')
-        expect(bar).to.have.text('15 / 111')
+        expect(bar).to.have.text('20 / 111')
+    })
+
+    it('increments selected progress bar', function() {
+        const bar = this.wrapper.find(Bar).at(1)
+        const button = this.wrapper.find('button').at(1)
+        const select = this.wrapper.find('select').first()
+        expect(bar).to.have.text('20 / 111')
+        select.get(0).selectedIndex = 1
+        select.simulate('change')
+        button.simulate('click')
+        expect(bar).to.have.text('30 / 111')
     })
 })

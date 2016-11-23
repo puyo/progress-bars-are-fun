@@ -13,9 +13,10 @@ export default class ProgressBarsApp extends React.Component {
 
     renderBars() {
         return this.state.values.map((value, i) => (
-            <Bar key={'bar-' + i}
-                 value={value}
-                 limit={this.props.limit}
+            <Bar
+                key={'bar-' + i}
+                limit={this.props.limit}
+                value={value}
             />
         ))
     }
@@ -29,7 +30,17 @@ export default class ProgressBarsApp extends React.Component {
                 {'Progress bar '}{i + 1}
             </option>
         ))
-        return (<select>{opts}</select>)
+        const onChange = (e) => {
+            this.setState({selected: parseInt(e.target.value)})
+        }
+        return (
+            <select
+                onChange={onChange}
+            >
+                {opts}
+            </select>
+        )
+
     }
 
     renderButtons() {
@@ -38,7 +49,7 @@ export default class ProgressBarsApp extends React.Component {
                 key={'button-' + i}
                 onClick={() => this.onClick(i)}
             >
-                {value}
+                {value >= 0 ? '+' : ''}{value}
             </button>
         ))
     }
