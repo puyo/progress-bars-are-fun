@@ -4,7 +4,8 @@ import ProgressBarsApp from './ProgressBarsApp'
 
 const URL = 'https://frontend-exercise.apps.staging.digital.gov.au/bars'
 
-require('./index.styl')
+import 'whatwg-fetch'
+import './index.styl'
 
 fetch(URL)
     .then(res => res.json())

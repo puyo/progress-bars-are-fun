@@ -66,6 +66,8 @@ export default class ProgressBarsApp extends React.Component {
     render() {
         return (
             <div>
+                <h1>Progress Bars Are Fun</h1>
+
                 {this.renderBars()}
 
                 <div>

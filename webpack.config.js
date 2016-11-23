@@ -5,12 +5,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     devtool: 'eval-source-map',
     entry: [
+        'whatwg-fetch',
         './src/index',
         'webpack/hot/dev-server',
         'webpack-dev-server/client?http://localhost:8080'
     ],
     output: {
-        path: __dirname,
+        path: __dirname
         filename: 'bundle.js',
         publicPath: ''
     },
