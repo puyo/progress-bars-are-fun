@@ -23,7 +23,8 @@
     "describe": false,
     "it": false,
     "after": false,
-    "before": false
+    "before": false,
+    "fetch": false
   },
   "rules": {
     "accessor-pairs": 2,

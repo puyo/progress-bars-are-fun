@@ -1,8 +1,9 @@
 import React from 'react'
-import { render, mount, shallow } from 'enzyme'
+import { mount } from 'enzyme'
+import { expect } from 'chai'
+
 import ProgressBarsApp from '../src/ProgressBarsApp'
 import Bar from '../src/Bar'
-import { expect } from 'chai'
 
 describe('<ProgressBarsApp />', () => {
     before(function() {
