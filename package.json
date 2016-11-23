@@ -9,7 +9,12 @@
     "lint": "eslint src/* --fix --ext jsx --ext js",
     "test": "mocha",
     "watch:test": "mocha --watch",
-    "coverage": "nyc mocha --verbose --reporter=html"
+    "coverage": "nyc mocha"
+  },
+  "nyc": {
+    "extension": ".jsx",
+    "include"    : ["src/**"],
+    "exclude"    : ["*.js"]
   },
   "repository": {
     "type": "git",
@@ -20,6 +25,7 @@
   },
   "homepage": "https://github.com/user/repo",
   "dependencies": {
+    "babel-plugin-istanbul": "^3.0.0",
     "css-loader": "^0.26.0",
     "react": "^15.3.1",
     "react-redux": "^4.4.5",
