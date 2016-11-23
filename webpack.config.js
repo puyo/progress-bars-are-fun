@@ -15,7 +15,7 @@ module.exports = {
         publicPath: ''
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.js', '.jsx', '.styl']
     },
     module: {
         loaders: [{
@@ -24,7 +24,7 @@ module.exports = {
             include: path.join(__dirname, 'src'),
         }, {
             test: /\.styl$/,
-            loader: 'stylus-loader'
+            loader: 'style-loader!css-loader!stylus-loader'
         }]
     },
     plugins: [

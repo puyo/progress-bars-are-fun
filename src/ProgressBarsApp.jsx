@@ -66,8 +66,11 @@ export default class ProgressBarsApp extends React.Component {
     render() {
         return (
             <div>
-                <p> {JSON.stringify(this.props)} </p>
-                <p> {JSON.stringify(this.state)} </p>
+                <h1>Progress Bar Demo</h1>
+
+                {/* <p> {JSON.stringify(this.props)} </p>
+                    <p> {JSON.stringify(this.state)} </p>
+                  */}
 
                 {this.renderBars()}
 

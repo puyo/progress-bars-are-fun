@@ -24,7 +24,7 @@ describe('<ProgressBarsApp />', () => {
     })
 
     it('has the right labels on progress bars', function() {
-        expect(this.wrapper.find(Bar).first()).to.have.text('10 / 111')
+        expect(this.wrapper.find(Bar).first()).to.have.text('9%')
     })
 
     it('has the right labels on buttons', function() {
@@ -34,19 +34,19 @@ describe('<ProgressBarsApp />', () => {
     it('increments progress on click', function() {
         const bar = this.wrapper.find(Bar).first()
         const button = this.wrapper.find('button').at(1)
-        expect(bar).to.have.text('10 / 111')
+        expect(bar).to.have.text('9%')
         button.simulate('click')
-        expect(bar).to.have.text('20 / 111')
+        expect(bar).to.have.text('18%')
     })
 
     it('increments selected progress bar', function() {
         const bar = this.wrapper.find(Bar).at(1)
         const button = this.wrapper.find('button').at(1)
         const select = this.wrapper.find('select').first()
-        expect(bar).to.have.text('20 / 111')
+        expect(bar).to.have.text('18%')
         select.get(0).selectedIndex = 1
         select.simulate('change')
         button.simulate('click')
-        expect(bar).to.have.text('30 / 111')
+        expect(bar).to.have.text('27%')
     })
 })
