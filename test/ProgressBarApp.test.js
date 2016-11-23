@@ -6,7 +6,7 @@ import ProgressBarsApp from '../src/ProgressBarsApp'
 import Bar from '../src/Bar'
 
 describe('<ProgressBarsApp />', () => {
-    before(function() {
+    beforeEach(function() {
         this.wrapper = mount(
             <ProgressBarsApp
                 bars={[10, 20]}
@@ -49,5 +49,14 @@ describe('<ProgressBarsApp />', () => {
         select.simulate('change')
         button.simulate('click')
         expect(bar).to.have.text('27%')
+    })
+
+    it('minimum bar value is zero', function() {
+        const bar = this.wrapper.find(Bar).first()
+        const button = this.wrapper.find('button').at(2)
+        expect(bar).to.have.text('9%')
+        button.simulate('click')
+        button.simulate('click')
+        expect(bar).to.have.text('0%')
     })
 })

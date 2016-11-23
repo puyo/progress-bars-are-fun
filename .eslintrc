@@ -24,6 +24,8 @@
     "it": false,
     "after": false,
     "before": false,
+    "afterEach": false,
+    "beforeEach": false,
     "fetch": false
   },
   "rules": {
