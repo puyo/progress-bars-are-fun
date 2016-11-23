@@ -6,47 +6,34 @@ export default class ProgressBarsApp extends React.Component {
     constructor(props) {
         super()
         this.state = {
-            bars: [],
-            buttons: [],
-            limit: 0,
-            selected: 0
+            selected: 0,
+            values: props.bars.map(initValue => initValue)
         }
-        this.fetchData(props)
-    }
-
-    // {"buttons":[44,27,-31,-37],"bars":[18,48,37],"limit":120}
-    fetchData(props) {
-        fetch(ProgressBarsApp.URL, props.options || {})
-            .then(res => res.json())
-            .then(json => {
-                this.setState({
-                    bars: json.bars,
-                    buttons: json.buttons,
-                    limit: json.limit
-                })
-            })
-            // .catch(error => {
-            // })
     }
 
     renderBars() {
-        return this.state.bars.map((initValue, i) => (
+        return this.props.bars.map((initValue, i) => (
             <Bar key={'bar-' + i}
                  value={initValue}
-                 limit={this.state.limit}
+                 limit={this.props.limit}
             />
         ))
     }
 
     renderSelect() {
-        const opts = this.state.bars.map((initValue, i) => (
-            <option key={'opt-' + i} value={i}>Progress bar {i + 1}</option>
+        const opts = this.props.bars.map((initValue, i) => (
+            <option
+                key={'opt-' + i}
+                value={i}
+            >
+                {'Progress bar '}{i + 1}
+            </option>
         ))
         return (<select>{opts}</select>)
     }
 
     renderButtons() {
-        return this.state.buttons.map((value, i) => (
+        return this.props.buttons.map((value, i) => (
             <button
                 key={'button-' + i}
                 onClick={() => this.onClick(i)}
@@ -58,18 +45,19 @@ export default class ProgressBarsApp extends React.Component {
 
     onClick(buttonIndex) {
         const barIndex = this.state.selected
-        const diff = this.state.buttons[buttonIndex]
-        const oldVal = this.state.bars[barIndex]
+        const diff = this.props.buttons[buttonIndex]
+        const oldVal = this.state.values[barIndex]
         const newState = Object.assign({}, this.state)
-        newState.bars[barIndex] = Math.max(0, oldVal + diff)
+        newState.values[barIndex] = Math.max(0, oldVal + diff)
         this.setState(newState)
     }
 
     render() {
         return (
             <div>
-                <p> {JSON.stringify(this.state)} </p>
-
+                {/* <p> {JSON.stringify(this.props)} </p>
+                    <p> {JSON.stringify(this.state)} </p>
+                  */}
                 {this.renderBars()}
 
                 <div>
@@ -81,4 +69,8 @@ export default class ProgressBarsApp extends React.Component {
     }
 }
 
-ProgressBarsApp.URL = 'http://frontend-exercise.apps.staging.digital.gov.au/bars'
+ProgressBarsApp.propTypes = {
+    bars: React.PropTypes.arrayOf(React.PropTypes.number),
+    buttons: React.PropTypes.arrayOf(React.PropTypes.number),
+    limit: React.PropTypes.number
+}

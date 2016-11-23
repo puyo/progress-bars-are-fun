@@ -20,8 +20,10 @@
     "document": false,
     "navigator": false,
     "window": false,
-    "__SETTINGS": false,
-    "Modernizr": false
+    "describe": false,
+    "it": false,
+    "after": false,
+    "before": false
   },
   "rules": {
     "accessor-pairs": 2,
