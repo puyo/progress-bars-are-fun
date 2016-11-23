@@ -1,10 +1,11 @@
 import React from 'react'
 
-export default class Root extends React.Component {
+export default class Bar extends React.Component {
+
     render() {
         return (
             <div>
-                Hi there ofoo
+            BAR {this.props.value} / {this.props.limit}
             </div>
         )
     }

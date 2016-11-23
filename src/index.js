@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Root from './Root'
+import ProgressBarsApp from './ProgressBarsApp'
 
 ReactDOM.render(
-    React.createElement(Root),
+    React.createElement(ProgressBarsApp),
     document.querySelector('.root')
 )
