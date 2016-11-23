@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import ProgressBarsApp from './ProgressBarsApp'
 
-const URL = 'http://frontend-exercise.apps.staging.digital.gov.au/bars'
+const URL = 'https://frontend-exercise.apps.staging.digital.gov.au/bars'
 
 require('./index.styl')
 
